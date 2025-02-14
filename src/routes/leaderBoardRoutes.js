@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/leaderBoardController");
 
-router.get("/board", controller.getBoards);
-router.post("/ranks", controller.postRanks);
+router.get("/", controller.getBoard);
+router.post("/save-rank", controller.postRanks);
 
 module.exports = router;
