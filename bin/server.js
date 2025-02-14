@@ -2,10 +2,9 @@
 
 const http = require("http");
 const debug = require("debug")("nodejs:server");
-const errorHandler = require("./middlewares/errorHandler");
 const process = require("process");
 const dotenv = require("dotenv");
-const app = require("./app");
+const app = require("../src/app");
 
 dotenv.config();
 
@@ -15,7 +14,8 @@ function onListening() {
   debug(`Listening on ${bind}`);
 }
 
-const { normalizePort } = require("./config/app");
+const { normalizePort } = require("../src/config/app");
+const errorHandler = require("../src/middlewares/errorHandler");
 
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
