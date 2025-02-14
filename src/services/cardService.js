@@ -1,4 +1,5 @@
 "use strict";
+const { v4: uuidv4 } = require("uuid");
 
 const emojis = [
   "🐶",
@@ -62,10 +63,12 @@ exports.generateRandomCards = (pairs) => {
     selectedEmojis
       .map((emoji, index) => [
         {
+          id: uuidv4(),
           pairId: index,
           content: emoji,
         },
         {
+          id: uuidv4(),
           pairId: index,
           content: emoji,
         },
