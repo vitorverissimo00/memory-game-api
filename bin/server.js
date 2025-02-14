@@ -5,6 +5,7 @@ const debug = require("debug")("nodejs:server");
 const process = require("process");
 const dotenv = require("dotenv");
 const app = require("../src/app");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ function onListening() {
 
 const { normalizePort } = require("../src/config/app");
 const errorHandler = require("../src/middlewares/errorHandler");
+app.use(cors());
 
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
