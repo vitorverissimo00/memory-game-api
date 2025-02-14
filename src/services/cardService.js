@@ -57,12 +57,20 @@ exports.generateRandomCards = (pairs) => {
   }
 
   const selectedEmojis = shuffleArray(emojis).slice(0, pairs);
-  const cards = shuffleArray([...selectedEmojis, ...selectedEmojis]).map(
-    (emoji, index) => ({
-      id: index + 1,
-      content: emoji,
-      isFlipped: false,
-    })
+
+  const cards = shuffleArray(
+    selectedEmojis
+      .map((emoji, index) => [
+        {
+          pairId: index,
+          content: emoji,
+        },
+        {
+          pairId: index,
+          content: emoji,
+        },
+      ])
+      .flat()
   );
 
   return cards;
